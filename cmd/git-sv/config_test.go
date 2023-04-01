@@ -27,6 +27,10 @@ func Test_merge(t *testing.T) {
 		{"overwrite list with empty", Config{Branches: sv.BranchesConfig{Skip: []string{"a", "b"}}}, Config{Branches: sv.BranchesConfig{Skip: make([]string, 0)}}, Config{Branches: sv.BranchesConfig{Skip: make([]string, 0)}}, false},
 		{"default list", Config{Branches: sv.BranchesConfig{Skip: []string{"a", "b"}}}, Config{Branches: sv.BranchesConfig{Skip: nil}}, Config{Branches: sv.BranchesConfig{Skip: []string{"a", "b"}}}, false},
 
+		{"overwrite sub list with empty", Config{Branches: sv.BranchesConfig{PreRelease: []string{"beta"}}}, Config{Branches: sv.BranchesConfig{PreRelease: make([]string, 0)}}, Config{Branches: sv.BranchesConfig{PreRelease: make([]string, 0)}}, false},
+		{"overwrite sub list", Config{Branches: sv.BranchesConfig{PreRelease: make([]string, 0)}}, Config{Branches: sv.BranchesConfig{PreRelease: []string{"beta"}}}, Config{Branches: sv.BranchesConfig{PreRelease: []string{"beta"}}}, false},
+		{"default sub list", Config{Branches: sv.BranchesConfig{PreRelease: []string{"beta"}}}, Config{Branches: sv.BranchesConfig{PreRelease: nil}}, Config{Branches: sv.BranchesConfig{PreRelease: []string{"beta"}}}, false},
+
 		{"overwrite pointer bool false", Config{Branches: sv.BranchesConfig{SkipDetached: &boolFalse}}, Config{Branches: sv.BranchesConfig{SkipDetached: &boolTrue}}, Config{Branches: sv.BranchesConfig{SkipDetached: &boolTrue}}, false},
 		{"overwrite pointer bool true", Config{Branches: sv.BranchesConfig{SkipDetached: &boolTrue}}, Config{Branches: sv.BranchesConfig{SkipDetached: &boolFalse}}, Config{Branches: sv.BranchesConfig{SkipDetached: &boolFalse}}, false},
 		{"default pointer bool", Config{Branches: sv.BranchesConfig{SkipDetached: &boolTrue}}, Config{Branches: sv.BranchesConfig{SkipDetached: nil}}, Config{Branches: sv.BranchesConfig{SkipDetached: &boolTrue}}, false},

@@ -45,6 +45,7 @@ type BranchesConfig struct {
 	Suffix       string   `yaml:"suffix"`
 	DisableIssue bool     `yaml:"disable-issue"`
 	Skip         []string `yaml:"skip,flow"`
+	PreRelease   []string `yaml:"pre-release,flow"`
 	SkipDetached *bool    `yaml:"skip-detached"`
 }
 

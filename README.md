@@ -117,8 +117,9 @@ branches: # Git branches config.
     prefix: ([a-z]+\/)? # Prefix used on branch name, it should be a regex group.
     suffix: (-.*)? # Suffix used on branch name, it should be a regex group.
     disable-issue: false # Set true if there is no need to recover issue id from branch name.
-    skip: [master, main, developer] # List of branch names ignored on commit message validation.
+    skip: [master, main, develop] # List of branch names ignored on commit message validation.
     skip-detached: false # Set true if a detached branch should be ignored on commit message validation.
+    pre-release: [develop]
 
 commit-message:
     types: [build, ci, chore, docs, feat, fix, perf, refactor, revert, style, test] # Supported commit types.
